@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "pretty": true,
+    "sourceMap": false,
+    "baseUrl": "./",
+    "removeComments": true,
+    "strict": false,
+    "strictPropertyInitialization": false,
+    "target": "es5",
+    "outDir": "./dist"
+  },
+  "include": ["src/*.ts", "src/**/*.ts"],
+  "exclude": ["node_modules"]
+}

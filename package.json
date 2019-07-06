@@ -1,0 +1,20 @@
+{
+  "name": "express-routes-list",
+  "version": "1.0.0",
+  "description": "This package list out all the routes in the express.js application ",
+  "main": "./dist/index.js",
+  "scripts": {
+    "compile": "tsc",
+    "start": "node dist/index.js"
+  },
+  "author": "Vijay",
+  "license": "MIT",
+  "dependencies": {
+    "ascii-table": "0.0.9"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.0",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.2"
+  }
+}
