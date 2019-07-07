@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "This package list out all the routes in the express.js application ",
   "main": "./dist/index.js",
+  "repository": "vijay4495/express-routes-catalogue",
+  "homepage": "https://github.com/vijay4495/express-routes-catalogue",
   "scripts": {
     "compile": "tsc",
     "start": "node dist/index.js"
