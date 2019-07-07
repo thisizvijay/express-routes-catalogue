@@ -1,6 +1,11 @@
-lib
-coverage
-.nyc_output
+examples
+test
+src
+
+.babelrc
+.eslintrc
+.travis.yml
+yarn.lock
 
 # Logs
 logs

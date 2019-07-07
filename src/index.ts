@@ -1,7 +1,10 @@
 import * as AsciiTable from "ascii-table";
 class RoutesList {
+
   public static table;
-  public display(app) {
+
+
+  public static termainal(app){
     RoutesList.table = new AsciiTable("List All Routes");
     RoutesList.table.setHeading("Method", "URI");
       app._router.stack.forEach(
@@ -9,7 +12,25 @@ class RoutesList {
     );
     console.log(RoutesList.table.toString())
   }
-  public static print(path, layer) {
+
+  public web() {
+
+    let table = `<table>
+    <thead>
+    <tr>
+    <th colspan="2" align="center">List All Routes</th>
+    </tr>
+    </thead>
+    <tbody>
+    `;
+
+
+    table += `</tbody></table>`;
+  
+  }
+
+
+  protected static print(path, layer) {
     if (layer.route) {
       layer.route.stack.forEach(
         RoutesList.print.bind(
@@ -34,7 +55,7 @@ class RoutesList {
       );
     }
   }
-  public static split(thing: any) {
+  protected static split(thing: any) {
     if (typeof thing === "string") {
       return thing.split("/");
     } else if (thing.fast_slash) {
@@ -50,6 +71,8 @@ class RoutesList {
         : "<complex:" + thing.toString() + ">";
     }
   }
+
+
 }
 
 export default RoutesList;
