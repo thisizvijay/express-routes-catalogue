@@ -13,8 +13,8 @@ A simple utility that lists out all registered routes in your express applicatio
   
 
 ## Example
-- [Terminal Output](#terminal-output)
-- [Web Output](#web-output )
+- [Terminal Output](#1-terminal-output)
+- [Web Output](#2-web-output )
 
   
 
