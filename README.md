@@ -24,19 +24,20 @@ A simple utlity that lists out all registered routes in your express application
 
 ``` js
 
-const  express  =  require("express");
+const express = require("express");
 
-const  routeList  =  require("express-route-catelogue");
-const  app  =  express();
+const routeList = require("express-route-catelogue");
+const app = express();
 
-app.get('/',(req,res)=>{
-	res.send("Hello World ...");
+app.get("/", (req, res) => {
+  res.send("Hello World ...");
 });
 
-// For terminal output  
-if(process.env.NODE_ENV === "development"){
-    routeList.terminal(app);
+// For terminal output
+if (process.env.NODE_ENV === "development") {
+  routeList.terminal(app);
 }
+
 ...
 ```
 
@@ -46,21 +47,22 @@ if(process.env.NODE_ENV === "development"){
 
 ``` js
 
-const  express  =  require("express");
-const  routeList  =  require("express-route-catelogue");  
-const  app  =  express();
+const express = require("express");
+const routeList = require("express-route-catelogue");
+const app = express();
 
-app.get('/',(req,res)=>{
- res.send("Hello World ...");
+app.get("/", (req, res) => {
+  res.send("Hello World ...");
 });
 
 // For web output
-if(process.env.NODE_ENV === "development"){
-    routeList.terminal({
-    app:app,
-    path:"/route-list"
-    });
+if (process.env.NODE_ENV === "development") {
+  routeList.web({
+    app: app,
+    path: "/route-list"
+  });
 }
+
 ...
 ```
 Now navigation to your-application/route-list, you can see full routes list.
