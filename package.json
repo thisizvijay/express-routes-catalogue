@@ -1,5 +1,5 @@
 {
-  "name": "express-routes-list",
+  "name": "express-routes-catalogue",
   "version": "1.0.0",
   "description": "This package list out all the routes in the express.js application ",
   "main": "./dist/index.js",
