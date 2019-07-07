@@ -1,5 +1,5 @@
 
-# express-routes-list
+# express-routes-catalogue
 
 A simple utility that lists out all registered routes in your express application.
   
@@ -7,7 +7,7 @@ A simple utility that lists out all registered routes in your express applicatio
 ## Installation
 
 ```bash
- npm install -D express-routes-catelogue 
+ npm install -D express-routes-catalogue 
  ```
 
   
@@ -57,10 +57,10 @@ app.get("/", (req, res) => {
 
 // For web output
 if (process.env.NODE_ENV === "development") {
-  routeList.web({
-    app: app,
-    path: "/route-list"
-  });
+  routeList.web(
+    app,
+    "/route-list"
+  );
 }
 
 ...
