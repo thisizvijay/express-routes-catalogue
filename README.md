@@ -1,3 +1,4 @@
+
 # express-routes-list
 
 A simple utility that lists out all registered routes in your express application.
@@ -19,7 +20,7 @@ A simple utility that lists out all registered routes in your express applicatio
 
 ## 1. Terminal Output
 
-  
+  ![enter image description here](https://github.com/vijay4495/express-routes-catalogue/blob/master/terminal-route-list.png?raw=true)
 
 ``` js
 
@@ -43,7 +44,7 @@ if (process.env.NODE_ENV === "development") {
   
 
 ## 2. Web output
-
+![enter image description here](https://github.com/vijay4495/express-routes-catalogue/blob/master/web-route-list.png?raw=true)
 ``` js
 
 const express = require("express");
