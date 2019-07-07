@@ -1,7 +1,6 @@
 # express-routes-list
 
-A simple utlity that lists out all registered routes in your express application.
-
+A simple utility that lists out all registered routes in your express application.
   
 
 ## Installation

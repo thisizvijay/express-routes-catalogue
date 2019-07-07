@@ -2,31 +2,77 @@ import * as AsciiTable from "ascii-table";
 class RoutesList {
 
   public static table;
+  public static data=[];
 
 
-  public static termainal(app){
+  public static terminal(app){
     RoutesList.table = new AsciiTable("List All Routes");
     RoutesList.table.setHeading("Method", "URI");
       app._router.stack.forEach(
       RoutesList.print.bind(undefined, [])    
     );
+    RoutesList.data.forEach((item:any) => {
+      RoutesList.table.addRow(item.method,item.URI);
+    });
     console.log(RoutesList.table.toString())
   }
 
-  public web() {
-
-    let table = `<table>
+  public static web(app,path) {
+    app._router.stack.forEach(
+      RoutesList.print.bind(undefined, [])    
+    );
+    let table = `<!DOCTYPE html>
+    <html>
+    <head>
+    <style>
+    body{
+      width:75%;
+      margin: 0 auto;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+   
+    table, th, td {
+      border: 1px solid #dee2e6;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 15px;
+      text-align: left;
+    }
+    table{
+      width:"100%"
+    } 
+    th{
+      font-size: 18px;
+      color: #fff;
+      font-weight:"bold";
+      line-height: 1.4;
+      background-color: #343a40;
+    }
+    .text-center{
+      text-align:center;
+    }    
+    </style>
+    </head>
+    <body>
+    <h1 class="text-center">List of Routes</h1>
+    <table style="width:100%">
     <thead>
     <tr>
-    <th colspan="2" align="center">List All Routes</th>
+    <th class="text-center" align="center">#</th>
+    <th align="center">METHOD</th>
+    <th align="center">URI</th>
     </tr>
     </thead>
     <tbody>
     `;
-
-
-    table += `</tbody></table>`;
-  
+    RoutesList.data.forEach((item:any,index:any) => {
+      table+=`<tr><td class="text-center">${index+1}</td><td>${item.method}</td><td>${item.URI}</td></tr>`;
+    });
+    table += `</tbody></table></body></html>`;
+    app.get(path,(req,res)=>{
+      res.send(table);
+    })
   }
 
 
@@ -46,13 +92,14 @@ class RoutesList {
         )
       );
     } else if (layer.method) {
-      RoutesList.table.addRow(
-        layer.method.toUpperCase(),
-        path
-          .concat(RoutesList.split(layer.regexp))
-          .filter(Boolean)
-          .join("/")
-      );
+      const item={
+        method:layer.method.toUpperCase(),
+        URI:path
+        .concat(RoutesList.split(layer.regexp))
+        .filter(Boolean)
+        .join("/")
+      };
+      RoutesList.data.push(item);
     }
   }
   protected static split(thing: any) {
