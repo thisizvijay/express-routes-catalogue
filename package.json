@@ -1,6 +1,6 @@
 {
   "name": "express-routes-catalogue",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This package list out all the routes in the express.js application ",
   "main": "./dist/index.js",
   "repository": "vijay4495/express-routes-catalogue",
