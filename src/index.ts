@@ -1,26 +1,21 @@
 import * as AsciiTable from "ascii-table";
+
 class RoutesList {
-
   public static table;
-  public static data=[];
+  public static data = [];
 
-
-  public static terminal(app){
+  public static terminal(app) {
     RoutesList.table = new AsciiTable("List All Routes");
     RoutesList.table.setHeading("Method", "URI");
-      app._router.stack.forEach(
-      RoutesList.print.bind(undefined, [])    
-    );
-    RoutesList.data.forEach((item:any) => {
-      RoutesList.table.addRow(item.method,item.URI);
+    app._router.stack.forEach(RoutesList.print.bind(undefined, []));
+    RoutesList.data.forEach((item: any) => {
+      RoutesList.table.addRow(item.method, item.URI);
     });
-    console.log(RoutesList.table.toString())
+    console.log(RoutesList.table.toString());
   }
 
-  public static web(app,path) {
-    app._router.stack.forEach(
-      RoutesList.print.bind(undefined, [])    
-    );
+  public static web(app, path) {
+    app._router.stack.forEach(RoutesList.print.bind(undefined, []));
     let table = `<!DOCTYPE html>
     <html>
     <head>
@@ -66,15 +61,16 @@ class RoutesList {
     </thead>
     <tbody>
     `;
-    RoutesList.data.forEach((item:any,index:any) => {
-      table+=`<tr><td class="text-center">${index+1}</td><td>${item.method}</td><td>${item.URI}</td></tr>`;
+    RoutesList.data.forEach((item: any, index: any) => {
+      table += `<tr><td class="text-center">${index + 1}</td><td>${
+        item.method
+      }</td><td>${item.URI}</td></tr>`;
     });
     table += `</tbody></table></body></html>`;
-    app.get(path,(req,res)=>{
+    app.get(path, (req, res) => {
       res.send(table);
-    })
+    });
   }
-
 
   protected static print(path, layer) {
     if (layer.route) {
@@ -92,12 +88,12 @@ class RoutesList {
         )
       );
     } else if (layer.method) {
-      const item={
-        method:layer.method.toUpperCase(),
-        URI:path
-        .concat(RoutesList.split(layer.regexp))
-        .filter(Boolean)
-        .join("/")
+      const item = {
+        method: layer.method.toUpperCase(),
+        URI: path
+          .concat(RoutesList.split(layer.regexp))
+          .filter(Boolean)
+          .join("/"),
       };
       RoutesList.data.push(item);
     }
@@ -118,8 +114,6 @@ class RoutesList {
         : "<complex:" + thing.toString() + ">";
     }
   }
-
-
 }
 
 export default RoutesList;
