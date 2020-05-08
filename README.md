@@ -26,7 +26,7 @@ A simple utility that lists out all registered routes in your express applicatio
 
 const express = require("express");
 
-const routeList = require("express-route-catelogue");
+const routeList = require("express-routes-catalogue");
 const app = express();
 
 app.get("/", (req, res) => {
@@ -48,7 +48,7 @@ if (process.env.NODE_ENV === "development") {
 ``` js
 
 const express = require("express");
-const routeList = require("express-route-catelogue");
+const routeList = require("express-routes-catalogue");
 const app = express();
 
 app.get("/", (req, res) => {
