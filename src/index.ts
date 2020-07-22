@@ -9,7 +9,7 @@ class RoutesList {
     RoutesList.table = new AsciiTable("List All Routes");
     RoutesList.table.setHeading("Method", "URI");
       app._router.stack.forEach(
-      RoutesList.print.bind(undefined, [])    
+      RoutesList.print.bind(undefined, [])
     );
     RoutesList.data.forEach((item:any) => {
       RoutesList.table.addRow(item.method,item.URI);
@@ -19,7 +19,7 @@ class RoutesList {
 
   public static web(app,path) {
     app._router.stack.forEach(
-      RoutesList.print.bind(undefined, [])    
+      RoutesList.print.bind(undefined, [])
     );
     let table = `<!DOCTYPE html>
     <html>
@@ -30,7 +30,7 @@ class RoutesList {
       margin: 0 auto;
       font-family: Arial, Helvetica, sans-serif;
     }
-   
+
     table, th, td {
       border: 1px solid #dee2e6;
       border-collapse: collapse;
@@ -41,7 +41,7 @@ class RoutesList {
     }
     table{
       width:"100%"
-    } 
+    }
     th{
       font-size: 18px;
       color: #fff;
@@ -51,7 +51,7 @@ class RoutesList {
     }
     .text-center{
       text-align:center;
-    }    
+    }
     </style>
     </head>
     <body>
@@ -92,16 +92,25 @@ class RoutesList {
         )
       );
     } else if (layer.method) {
+
       const item={
-        method:layer.method.toUpperCase(),
+        method:[layer.method.toUpperCase()],
         URI:path
         .concat(RoutesList.split(layer.regexp))
         .filter(Boolean)
         .join("/")
       };
+
+      for (let i = 0; i < RoutesList.data.length; i++) {
+        if (RoutesList.data[i].URI === item.URI) {
+          RoutesList.data[i].method = RoutesList.data[i].method.concat(item.URI)
+          return
+        }
+      }
       RoutesList.data.push(item);
     }
   }
+  
   protected static split(thing: any) {
     if (typeof thing === "string") {
       return thing.split("/");
