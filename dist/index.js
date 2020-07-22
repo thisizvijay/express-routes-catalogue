@@ -32,20 +32,21 @@ var RoutesList = (function () {
             layer.handle.stack.forEach(RoutesList.print.bind(undefined, path.concat(RoutesList.split(layer.regexp))));
         }
         else if (layer.method) {
-            var item = {
-                method: layer.method.toUpperCase(),
-                URI: path
-                    .concat(RoutesList.split(layer.regexp))
-                    .filter(Boolean)
-                    .join("/")
-            };
-          for (let i = 0; i < RoutesList.data.length; i++) {
-            if (RoutesList.data[i].URI === item.URI) {
-              RoutesList.data[i].method = RoutesList.data[i].method.concat(item.URI)
-              return
+          var item = {
+            method: [layer.method.toUpperCase()],
+            URI: path
+              .concat(RoutesList.split(layer.regexp))
+              .filter(Boolean)
+              .join("/")
+          };
+          for (let i = 0; i < RoutesList.data.length; i++)
+            if (RoutesList.data[i].URI === item.URI ) {
+              if (!RoutesList.data[i].method.includes(item.method[0]))
+                RoutesList.data[i].method = RoutesList.data[i].method.concat(item.method)
+              else
+                return
             }
-          }
-            RoutesList.data.push(item);
+          RoutesList.data.push(item);
         }
     };
     RoutesList.split = function (thing) {

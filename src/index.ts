@@ -91,22 +91,22 @@ class RoutesList {
           path.concat(RoutesList.split(layer.regexp))
         )
       );
-    } else if (layer.method) {
-
-      const item={
-        method:[layer.method.toUpperCase()],
-        URI:path
-        .concat(RoutesList.split(layer.regexp))
-        .filter(Boolean)
-        .join("/")
+    }
+    else if (layer.method) {
+      var item = {
+        method: [layer.method.toUpperCase()],
+        URI: path
+          .concat(RoutesList.split(layer.regexp))
+          .filter(Boolean)
+          .join("/")
       };
-
-      for (let i = 0; i < RoutesList.data.length; i++) {
-        if (RoutesList.data[i].URI === item.URI) {
-          RoutesList.data[i].method = RoutesList.data[i].method.concat(item.URI)
-          return
+      for (let i = 0; i < RoutesList.data.length; i++)
+        if (RoutesList.data[i].URI === item.URI ) {
+          if (!RoutesList.data[i].method.includes(item.method[0]))
+            RoutesList.data[i].method = RoutesList.data[i].method.concat(item.method)
+          else
+            return
         }
-      }
       RoutesList.data.push(item);
     }
   }
