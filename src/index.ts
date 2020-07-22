@@ -110,7 +110,7 @@ class RoutesList {
       RoutesList.data.push(item);
     }
   }
-  
+
   protected static split(thing: any) {
     if (typeof thing === "string") {
       return thing.split("/");

@@ -39,6 +39,12 @@ var RoutesList = (function () {
                     .filter(Boolean)
                     .join("/")
             };
+          for (let i = 0; i < RoutesList.data.length; i++) {
+            if (RoutesList.data[i].URI === item.URI) {
+              RoutesList.data[i].method = RoutesList.data[i].method.concat(item.URI)
+              return
+            }
+          }
             RoutesList.data.push(item);
         }
     };
