@@ -1,6 +1,6 @@
 {
   "name": "express-routes-catalogue",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "This package list out all the routes in the express.js application ",
   "main": "./dist/index.js",
   "repository": "vijay4495/express-routes-catalogue",
@@ -19,5 +19,17 @@
     "prettier": "^1.18.2",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.2"
-  }
+  },
+  "keywords": [
+    "express",
+    "routes",
+    "express-routes-list",
+    "logs",
+    "paths",
+    "routes-paths",
+    "end-points",
+    "api",
+    "end-point",
+    "list"
+  ]
 }
