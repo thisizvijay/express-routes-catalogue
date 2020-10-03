@@ -1,17 +1,14 @@
-import * as AsciiTable from "ascii-table";
-
 class RoutesList {
   public static table;
   public static data = [];
 
   public static terminal(app) {
-    RoutesList.table = new AsciiTable("List All Routes");
-    RoutesList.table.setHeading("Method", "URI");
+    const data = [];
     app._router.stack.forEach(RoutesList.print.bind(undefined, []));
     RoutesList.data.forEach((item: any) => {
-      RoutesList.table.addRow(item.method, item.URI);
+      data.push({ Method: item.method, URI: item.URI || "/" });
     });
-    console.log(RoutesList.table.toString());
+    console.table(data);
   }
 
   public static web(app, path) {
@@ -25,7 +22,7 @@ class RoutesList {
       margin: 0 auto;
       font-family: Arial, Helvetica, sans-serif;
     }
-   
+
     table, th, td {
       border: 1px solid #dee2e6;
       border-collapse: collapse;
@@ -36,7 +33,7 @@ class RoutesList {
     }
     table{
       width:"100%"
-    } 
+    }
     th{
       font-size: 18px;
       color: #fff;
@@ -46,7 +43,7 @@ class RoutesList {
     }
     .text-center{
       text-align:center;
-    }    
+    }
     </style>
     </head>
     <body>
