@@ -1,9 +1,6 @@
-import * as AsciiTable from "ascii-table";
 class RoutesList {
-
   public static table;
-  public static data=[];
-
+  public static data = [];
 
   public static terminal(app){
     RoutesList.table = new AsciiTable("List All Routes");
@@ -14,7 +11,7 @@ class RoutesList {
     RoutesList.data.forEach((item:any) => {
       RoutesList.table.addRow(item.method,item.URI);
     });
-    console.log(RoutesList.table.toString())
+    console.table(data);
   }
 
   public static web(app,path) {
@@ -66,15 +63,16 @@ class RoutesList {
     </thead>
     <tbody>
     `;
-    RoutesList.data.forEach((item:any,index:any) => {
-      table+=`<tr><td class="text-center">${index+1}</td><td>${item.method}</td><td>${item.URI}</td></tr>`;
+    RoutesList.data.forEach((item: any, index: any) => {
+      table += `<tr><td class="text-center">${index + 1}</td><td>${
+        item.method
+      }</td><td>${item.URI}</td></tr>`;
     });
     table += `</tbody></table></body></html>`;
-    app.get(path,(req,res)=>{
+    app.get(path, (req, res) => {
       res.send(table);
-    })
+    });
   }
-
 
   protected static print(path, layer) {
     if (layer.route) {
@@ -127,8 +125,6 @@ class RoutesList {
         : "<complex:" + thing.toString() + ">";
     }
   }
-
-
 }
 
 export default RoutesList;

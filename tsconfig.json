@@ -9,7 +9,9 @@
     "strict": false,
     "strictPropertyInitialization": false,
     "target": "es5",
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "declaration":true,
+    "emitDeclarationOnly": true,
   },
   "include": ["src/*.ts", "src/**/*.ts"],
   "exclude": ["node_modules"]
